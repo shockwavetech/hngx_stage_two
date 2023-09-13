@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hngx_stage_two/main.dart';
 import 'package:hngx_stage_two/provider.dart';
-import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 import 'constants.dart';
 
 class EditDetails extends StatefulWidget {
@@ -14,23 +11,8 @@ class EditDetails extends StatefulWidget {
 }
 
 class _EditDetailsState extends State<EditDetails> {
-  final picker = ImagePicker();
   String loadingText = 'Save Changes';
   bool loading = false;
-  chooseImage() async {
-    final pickedFile = await picker.pickImage(
-        source: ImageSource.gallery, maxWidth: 500, maxHeight: 500);
-    setState(() {
-     try{
-       DataProvider.imageFile =  File(pickedFile!.path);
-     }catch(e){}
-      if(DataProvider.imageFile  != null){
-        DataProvider.imageUpdated = true;
-      }else{
-        DataProvider.imageUpdated = false;
-      }
-    });
-  }
   TextEditingController nameController = TextEditingController(text: DataProvider.userData['name']);
   TextEditingController roleController = TextEditingController(text: DataProvider.userData['role']);
   TextEditingController phoneController = TextEditingController(text: DataProvider.userData['phone']);
@@ -78,7 +60,7 @@ class _EditDetailsState extends State<EditDetails> {
               Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomePage()));
             },
           ),
-          title:  Text('Edit Mode', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.sp),),
+          title:  const Text('Edit Mode', style: TextStyle(fontWeight: FontWeight.bold),),
           backgroundColor: Constants.alternateColor,
           actions: [
             TextButton(
@@ -95,7 +77,7 @@ class _EditDetailsState extends State<EditDetails> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(height: 20.h,),
+              const SizedBox(height: 20,),
               Stack(
                 children: [
                   Container(
@@ -111,40 +93,17 @@ class _EditDetailsState extends State<EditDetails> {
                           )
                         ],
                         shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: !DataProvider.imageUpdated
-                              ? const AssetImage('images/display.png')
-                              : DataProvider.imageFile != null
-                              ? FileImage(DataProvider.imageFile!)
-                              : const AssetImage('images/display.png') as ImageProvider<Object>,
+                        image: const DecorationImage(
+                          image:  AssetImage('images/display.png')
                         )
 
                     ),
                   ),
-                  Positioned(
-                      right: 0,
-                      bottom: 0,
-                      child: GestureDetector(
-                        onTap: (){
-                          chooseImage();
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 40,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white, width: 4),
-                              shape: BoxShape.circle,
-                              color: Constants.alternateColor
-                          ),
-                          child: const Icon(Icons.edit, color: Colors.white,),
-                        ),
-                      )
-                  )
                 ],
               ),
-              SizedBox(height: 20.h,),
+              const SizedBox(height: 20,),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
                     CustomTextField(
@@ -194,7 +153,7 @@ class _EditDetailsState extends State<EditDetails> {
                   ],
                 ),
               ),
-              SizedBox(height: 20.h,),
+              const SizedBox(height: 20,),
 
 
             ],

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hngx_stage_two/edit_details.dart';
 import 'package:hngx_stage_two/provider.dart';
 import 'main_page.dart';
@@ -78,12 +77,7 @@ class _HomePageState extends State<HomePage> {
             unselectedLabelStyle:  const TextStyle(color: Colors.white),
             type: BottomNavigationBarType.fixed,
           ),
-          body:  ScreenUtilInit(
-            designSize: const Size(800, 1280),
-            builder: (context, child){
-              return pages[DataProvider.currentIndex];
-            },
-          )
+          body: pages[DataProvider.currentIndex]
 
         )
     );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Constants {
   static const Color backgroundColor = Color(0xFF384C5E);
@@ -41,7 +40,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10.h),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -52,7 +51,7 @@ class CustomTextField extends StatelessWidget {
           const SizedBox(height: 5),
           Container(
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.r),
+                borderRadius: BorderRadius.circular(10),
                 color: Colors.white,
                 border: Border.all(
                     color: Colors.green.withOpacity(0.7)),
@@ -106,6 +105,6 @@ class CustomTextField extends StatelessWidget {
 
   OutlineInputBorder myBorder() {
     return OutlineInputBorder(
-        borderSide: BorderSide.none, borderRadius: BorderRadius.circular(10.r));
+        borderSide: BorderSide.none, borderRadius: BorderRadius.circular(10));
   }
 }

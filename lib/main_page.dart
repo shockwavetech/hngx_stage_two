@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hngx_stage_two/provider.dart';
 
 import 'constants.dart';
@@ -29,13 +28,13 @@ class _MainPageState extends State<MainPage> {
               SystemNavigator.pop();
             },
           ),
-          title:  Text('View Mode', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.sp),),
+          title:  const Text('View Mode', style: TextStyle(fontWeight: FontWeight.bold,),),
           backgroundColor: Constants.alternateColor,
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(height: 20.h,),
+            const SizedBox(height: 20,),
             Container(
               height: 130,
               width: 130,
@@ -49,22 +48,18 @@ class _MainPageState extends State<MainPage> {
                   )
                 ],
                 shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: !DataProvider.imageUpdated
-                      ? const AssetImage('images/display.png')
-                      : DataProvider.imageFile != null
-                      ? FileImage(DataProvider.imageFile!)
-                      : const AssetImage('images/display.png') as ImageProvider<Object>,
+                image: const DecorationImage(
+                  image:  AssetImage('images/display.png')
                 )
 
               ),
             ),
-            SizedBox(height: 20.h,),
-            Text(DataProvider.userData['name'], style: TextStyle(fontWeight: FontWeight.w900, fontSize: 24.sp),),
-            Text(DataProvider.userData['role'], style: TextStyle(fontSize: 16.sp),),
-            SizedBox(height: 20.h,),
+            const SizedBox(height: 20,),
+            Text(DataProvider.userData['name'], style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 24),),
+            Text(DataProvider.userData['role'], style: const TextStyle(fontSize: 16),),
+            const SizedBox(height: 20,),
             Container(
-                height: 50.h,
+                height: 50,
                 color: Constants.alternateColor,
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -73,17 +68,17 @@ class _MainPageState extends State<MainPage> {
                   ],
                 )
             ),
-            SizedBox(height: 20.h,),
+            const SizedBox(height: 20,),
             Expanded(
               child: ListView(
                 children: [
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20.w,),
+                    margin: const EdgeInsets.symmetric(horizontal: 20,),
                     child: Column(
                       children: [
                         Container(
-                            height: 50.h,
-                            padding: EdgeInsets.symmetric(horizontal: 10.w),
+                            height: 50,
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
                             color: Constants.alternateColor,
                             child: const Row(
                               children: [
@@ -92,7 +87,7 @@ class _MainPageState extends State<MainPage> {
                             )
                         ),
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 10.w),
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
                           color: Colors.blueGrey,
                           child: Column(
                             children: [
@@ -132,15 +127,15 @@ class _MainPageState extends State<MainPage> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 20.h,),
+                  const SizedBox(height: 20,),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 20.w,),
+                    margin: const EdgeInsets.symmetric(horizontal: 20,),
                     child: Column(
                       mainAxisAlignment: MediaQuery.of(context).size.height > 800 ? MainAxisAlignment.start : MainAxisAlignment.center,
                       children: [
                         Container(
-                            height: 50.h,
-                            padding: EdgeInsets.symmetric(horizontal: 10.w),
+                            height: 50,
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
                             color: Constants.alternateColor,
                             child: const Row(
                               children: [
@@ -149,7 +144,7 @@ class _MainPageState extends State<MainPage> {
                             )
                         ),
                         Container(
-                            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                             color: Colors.blueGrey,
                             child: Text(DataProvider.userData['bio'], style: const TextStyle( wordSpacing: 2,), textAlign: TextAlign.justify,)
                         )
